@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Food } from './food';
 
 export const Fridge = () => {
   const [food, setFood] = useState([
@@ -25,7 +26,7 @@ export const Fridge = () => {
   return (
     <>
       {food.map((element) => (
-        <h1>{element.name}</h1>
+        <Food food={element}></Food>
       ))}
     </>
   );
