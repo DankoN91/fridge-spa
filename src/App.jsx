@@ -24,7 +24,7 @@ export default function App() {
               width: "250px",
             }}
           >
-            {loggedIn ? (
+            {localStorage.getItem('userId') ? (
               <div>
                 <li>
                   <Link to="/fridge" style={{ color: "blue" }}>

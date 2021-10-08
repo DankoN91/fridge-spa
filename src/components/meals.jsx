@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Meal } from "./meal";
 
@@ -8,11 +9,11 @@ export const Meals = () => {
 
   const getMeals = () => {
     fetch("http://127.0.0.1:3000/meals", {
-        headers: {
-          "client-request-id": localStorage.getItem("userId"),
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      headers: {
+        "client-request-id": localStorage.getItem("userId"),
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
       .then((response) => response.json())
       .then((data) => setMeals(data));
   };
@@ -39,7 +40,7 @@ export const Meals = () => {
     }
   }, [singleMeal]);
 
-  return (
+  return localStorage.getItem("userId") ? (
     <>
       <br />
       <Button variant="contained" onClick={() => getMeals()}>
@@ -60,5 +61,5 @@ export const Meals = () => {
         size="40"
       ></input>
     </>
-  );
+  ) : null;
 };

@@ -6,7 +6,11 @@ export const Login = (props) => {
   const [identification, setIdentification] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const setLoggedIn = props;
+  React.useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      history.push("/fridge");
+    }
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,8 +33,8 @@ export const Login = (props) => {
           console.log(data);
           if (data[0].successful === true) {
             window.localStorage.setItem("userId", data[0].id);
-            window.location.href = 'http://127.0.0.1:3001/fridge';
-            // history.push("/fridge");
+            // window.location.href = 'http://127.0.0.1:3001/fridge';
+            history.push("/fridge");
           } else alert("Something went wrong!");
         });
     }

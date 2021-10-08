@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -87,7 +88,7 @@ export const Fridge = () => {
     handleClose();
   };
 
-  return (
+  return localStorage.getItem("userId") ? (
     <>
       <br />
       <h4>Info about all food in your fridge</h4>
@@ -264,5 +265,5 @@ export const Fridge = () => {
         </Dialog>
       </React.Fragment>
     </>
-  );
+  ) : null;
 };
