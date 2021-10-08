@@ -50,12 +50,15 @@ export default function App() {
         </nav>
 
         <Switch>
-          <Route path="/">{loggedIn ? <Fridge /> : <Login />}</Route>
-          <Route path="/login">
+        <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/meals">{loggedIn ? <Meals /> : <Login setLoggedIn={setLoggedIn} />}</Route>
-          <Route path="/fridge">{loggedIn ? <Fridge /> : <Login />}</Route>
+        <Route path="/meals"><Meals /></Route>
+        <Route path="/fridge"><Fridge /></Route>
+          <Route path="/">{loggedIn ? <Fridge /> : <Login />}</Route>
+          
+          
+          
         </Switch>
       </div>
     </Router>
