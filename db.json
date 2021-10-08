@@ -1,20 +1,29 @@
 {
-  "food": [
+  "my-fridge": [
     {
-      "name": "adsadas",
-      "kcal": 123,
-      "proteins": "123",
-      "carbohydrates": "123",
-      "fat": "123",
-      "id": 123227
-    },
+      "name": "Chicken",
+      "kcal": 300,
+      "proteins": "50",
+      "carbohydrates": "50",
+      "fat": "20",
+      "mass": "30",
+      "id": 1
+    }
+  ],
+  "meals": [
     {
-      "name": "Cheese",
-      "kcal": 500,
-      "proteins": "40",
-      "carbohydrates": "100",
-      "fat": "100",
-      "id": 123228
+      "id": 1,
+      "name": "Apple pie",
+      "description": "Apples, flour, sugar",
+      "difficulty": "easy"
+    }
+  ],
+  "login": [
+    {
+      "identification": "Cvijan",
+      "password": "Svea",
+      "id": "9C4D50EE-2D56-4CD3-8152-34347DC9F2B0",
+      "successful": true
     }
   ]
 }

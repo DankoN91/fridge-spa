@@ -18,7 +18,12 @@ export const Fridge = () => {
   const [open, toggleOpen] = React.useState(false);
 
   const getFood = () => {
-    fetch("http://127.0.0.1:3000/food")
+    fetch("http://127.0.0.1:3000/my-fridge", {
+      headers: {
+        "client-request-id": localStorage.getItem("userId"),
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
       .then((response) => response.json())
       .then((data) => setFood(data));
   };
@@ -34,6 +39,7 @@ export const Fridge = () => {
       proteins: "",
       carbohydrates: "",
       fat: "",
+      mass: "",
     });
 
     toggleOpen(false);
@@ -45,6 +51,7 @@ export const Fridge = () => {
     proteins: "",
     carbohydrates: "",
     fat: "",
+    mass: "",
   });
 
   const handleSubmit = (event) => {
@@ -55,6 +62,7 @@ export const Fridge = () => {
       proteins: dialogValue.proteins,
       carbohydrates: dialogValue.carbohydrates,
       fat: dialogValue.fat,
+      mass: dialogValue.mass,
     });
     const newFood = {
       name: dialogValue.name,
@@ -62,9 +70,10 @@ export const Fridge = () => {
       proteins: dialogValue.proteins,
       carbohydrates: dialogValue.carbohydrates,
       fat: dialogValue.fat,
+      mass: dialogValue.mass,
     };
-    
-    fetch("http://127.0.0.1:3000/food", {
+
+    fetch("http://127.0.0.1:3000/my-fridge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,8 +89,18 @@ export const Fridge = () => {
 
   return (
     <>
-      {food ? food.map((element) => <Food food={element}></Food>) : null}
       <br />
+      <h4>Info about all food in your fridge</h4>
+      {food ? (
+        food.map((element) => (
+          <Food foodProps={element} getFoodProps={getFood}></Food>
+        ))
+      ) : (
+        <p>There is no food in your fridge</p>
+      )}
+      <br />
+      <h4>Search your fridge or add new food</h4>
+
       <React.Fragment>
         <Autocomplete
           value={value}
@@ -95,6 +114,7 @@ export const Fridge = () => {
                   proteins: "",
                   carbohydrates: "",
                   fat: "",
+                  mass: "",
                 });
               });
             } else if (newValue && newValue.inputValue) {
@@ -105,6 +125,7 @@ export const Fridge = () => {
                 proteins: "",
                 carbohydrates: "",
                 fat: "",
+                mass: "",
               });
             } else {
               setValue(newValue);
@@ -179,7 +200,6 @@ export const Fridge = () => {
                 variant="standard"
               />
               <TextField
-                autoFocus
                 margin="dense"
                 id="protein"
                 value={dialogValue.proteins}
@@ -194,7 +214,6 @@ export const Fridge = () => {
                 variant="standard"
               />
               <TextField
-                autoFocus
                 margin="dense"
                 id="carbs"
                 value={dialogValue.carbohydrates}
@@ -209,7 +228,6 @@ export const Fridge = () => {
                 variant="standard"
               />
               <TextField
-                autoFocus
                 margin="dense"
                 id="fat"
                 value={dialogValue.fat}
@@ -220,6 +238,20 @@ export const Fridge = () => {
                   })
                 }
                 label="Fat"
+                type="text"
+                variant="standard"
+              />
+              <TextField
+                margin="dense"
+                id="mass"
+                value={dialogValue.mass}
+                onChange={(event) =>
+                  setDialogValue({
+                    ...dialogValue,
+                    mass: event.target.value,
+                  })
+                }
+                label="Mass"
                 type="text"
                 variant="standard"
               />
