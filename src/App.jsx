@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Fridge } from "./components/fridge";
 
 export default function App() {
@@ -14,26 +9,16 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Fridge</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
+              <Link to="/meals">Meals</Link>
             </li>
           </ul>
         </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            {/* <About /> */}
-          </Route>
-          <Route path="/users">
-            {/* <Users /> */}
-          </Route>
+          <Route path="/meals">{/* <About /> */}</Route>
           <Route path="/">
             <Fridge />
           </Route>

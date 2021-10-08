@@ -11,10 +11,10 @@ export const Food = (props) => {
     display: "inline-block",
     padding: "3px",
     transform: "rotate(45deg)",
-    webkitTransform: "rotate(45deg)",
+    WebkitTransform: "rotate(45deg)",
   };
 
-  const {singleFood} = props;
+  const {food} = props;
 
   return (
     <Accordion>
@@ -23,10 +23,13 @@ export const Food = (props) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>{singleFood.name}</Typography>
+        <Typography>{food.name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>{singleFood.kcal}</Typography>
+        <Typography>Kcal: {food.kcal}</Typography>
+        <Typography>Proteins: {food.proteins}</Typography>
+        <Typography>Carbs: {food.carbohydrates}</Typography>
+        <Typography>Fat: {food.fat}</Typography>
       </AccordionDetails>
     </Accordion>
   );

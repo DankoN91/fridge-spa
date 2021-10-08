@@ -1,0 +1,20 @@
+{
+  "food": [
+    {
+      "name": "adsadas",
+      "kcal": 123,
+      "proteins": "123",
+      "carbohydrates": "123",
+      "fat": "123",
+      "id": 123227
+    },
+    {
+      "name": "Cheese",
+      "kcal": 500,
+      "proteins": "40",
+      "carbohydrates": "100",
+      "fat": "100",
+      "id": 123228
+    }
+  ]
+}
